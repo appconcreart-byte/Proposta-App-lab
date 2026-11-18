@@ -188,19 +188,19 @@ section[id]{padding:var(--section) 0}
 .solution .statement,.about .statement{max-width:22ch}
 .sub{margin-top:20px;font-size:clamp(17px,1.5vw,19px);line-height:1.55;color:var(--ink-3);max-width:52ch}
 
-/* secao problema com imagem de fundo (fundo dobra 2) */
-.problem{position:relative;overflow:hidden}
-.problem::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+/* secao proposta com imagem de fundo (fundo dobra 2) */
+.problem, .proposta{position:relative;overflow:hidden}
+.problem::before, .proposta::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
   background-image:image-set(url('assets/fundo-dobra2.webp') type('image/webp'), url('assets/fundo-dobra2.png') type('image/png'));
   background-position:center;background-size:cover;background-repeat:no-repeat;
   opacity:.62;
   filter:brightness(1.1) contrast(1.05);
   -webkit-mask-image:linear-gradient(180deg,transparent 0%,rgba(0,0,0,1) 18%,rgba(0,0,0,1) 82%,transparent 100%);
   mask-image:linear-gradient(180deg,transparent 0%,rgba(0,0,0,1) 18%,rgba(0,0,0,1) 82%,transparent 100%)}
-.problem::after{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+.problem::after, .proposta::after{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
   background:radial-gradient(ellipse 75% 65% at 50% 50%,color-mix(in srgb,var(--accent) 9%,transparent) 0%,rgba(6,13,23,.62) 55%,rgba(6,13,23,.88) 100%),
     linear-gradient(180deg,var(--canvas) 0%,transparent 22%,transparent 78%,var(--canvas) 100%)}
-.problem > .wrap{position:relative;z-index:1}
+.problem > .wrap, .proposta > .wrap{position:relative;z-index:1}
 
 /* motion simples e objetivo: jornada ao retrabalho */
 .flow-motion-container{
@@ -502,7 +502,7 @@ html:not(.js) .preloader{display:none}
       </a>
     </div>
     <nav class="nav-links" aria-label="Seções">
-      <a href="#problema">Problema</a>
+      <a href="#proposta">Proposta</a>
       <a href="#solucao">Solução</a>
       <a href="#cronograma">Cronograma</a>
       <a href="#investimento">Investimento</a>
@@ -518,7 +518,7 @@ html:not(.js) .preloader{display:none}
 <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
   <nav aria-label="Menu mobile">
     <a href="#resumo">Resumo</a>
-    <a href="#problema">Problema</a>
+    <a href="#proposta">Proposta</a>
     <a href="#solucao">Solução</a>
     <a href="#como-funciona">Como funciona</a>
     <a href="#cronograma">Cronograma</a>
@@ -597,10 +597,10 @@ html:not(.js) .preloader{display:none}
     </div>
   </section>
 
-  <!-- PROBLEMA -->
-  <section class="problem" id="problema">
+  <!-- PROPOSTA -->
+  <section class="problem proposta" id="proposta">
     <div class="wrap">
-      <h2 class="h2 sec-h" data-r>Problema</h2>
+      <h2 class="h2 sec-h" data-r>Proposta</h2>
       <p class="statement" data-r style="--i:1">Tudo feito em planilhas hoje, <span class="dim">com dados espalhados e retrabalho constante.</span></p>
       <p class="sub" data-r style="--i:2">A falta de conexão direta entre laboratório, produção e gestão gera perda de informação, atraso na desforma e lentidão na emissão dos laudos.</p>
 
@@ -967,6 +967,10 @@ html:not(.js) .preloader{display:none}
   if (/^\d{12,13}$/.test(CFG.whatsapp)) wa.href = `https://wa.me/${CFG.whatsapp}?text=${encodeURIComponent(msg)}`;
   else { wa.href = mailHref; wa.removeAttribute('target'); }
   document.getElementById('cta-mail').href = mailHref;
+
+  if (window.location.hash === '#problema') {
+    history.replaceState(null, '', '#proposta');
+  }
 
   const nav = document.getElementById('nav');
   const prog = document.getElementById('progress');
