@@ -15,6 +15,7 @@
 <link rel="preload" as="image" href="assets/preloader-bg.png">
 <link rel="preload" as="image" href="assets/fundo-dobra1.png">
 <link rel="preload" as="image" href="assets/fundo-dobra2.webp">
+<link rel="preload" as="image" href="assets/fundo-dobra3.webp">
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=Inter+Tight:wght@700&display=swap" rel="stylesheet">
 <script>document.documentElement.classList.add('js')</script>
 <style>
@@ -273,6 +274,20 @@ html:not(.js) .deliv h3{color:var(--ink)}
 .deliv .ex span em{font-style:normal;color:var(--ink-4);margin-right:6px}
 .deliv .screen-preview{margin-top:18px;border-radius:12px;border:1px solid var(--line-2);background:var(--s1);overflow:hidden;box-shadow:var(--card-shadow)}
 .deliv .screen-preview img{width:100%;height:auto;display:block}
+
+/* como funciona com imagem de fundo (fundo dobra 3) */
+.how{position:relative;overflow:hidden}
+.how::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+  background-image:image-set(url('assets/fundo-dobra3.webp') type('image/webp'), url('assets/fundo-dobra3.png') type('image/png'));
+  background-position:center;background-size:cover;background-repeat:no-repeat;
+  opacity:.58;
+  filter:brightness(1.08) contrast(1.04);
+  -webkit-mask-image:linear-gradient(180deg,transparent 0%,rgba(0,0,0,1) 16%,rgba(0,0,0,1) 84%,transparent 100%);
+  mask-image:linear-gradient(180deg,transparent 0%,rgba(0,0,0,1) 16%,rgba(0,0,0,1) 84%,transparent 100%)}
+.how::after{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:radial-gradient(ellipse 75% 65% at 50% 50%,color-mix(in srgb,var(--accent) 8%,transparent) 0%,rgba(6,13,23,.65) 55%,rgba(6,13,23,.9) 100%),
+    linear-gradient(180deg,var(--canvas) 0%,transparent 20%,transparent 80%,var(--canvas) 100%)}
+.how > .wrap{position:relative;z-index:1}
 
 /* como funciona */
 .pipe{margin-top:clamp(36px,4.5vw,56px);position:relative;border:1px solid var(--line);border-radius:16px;background:var(--s1);padding:clamp(28px,4vw,48px) clamp(20px,3vw,40px)}
