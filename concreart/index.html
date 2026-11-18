@@ -374,20 +374,6 @@ html:not(.js) .deliv h3{color:var(--ink)}
 .incl li b{color:var(--ink);font-weight:600}
 .incl li svg{width:16px;height:16px;color:var(--ok);flex:none;margin-top:4px}
 
-/* secao quem somos com imagem de fundo (fundo dobra 5) */
-.team{position:relative;overflow:hidden}
-.team::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
-  background-image:image-set(url('assets/fundo-dobra5.webp') type('image/webp'), url('assets/fundo-dobra5.png') type('image/png'));
-  background-position:center clamp(50px,7vw,90px);background-size:cover;background-repeat:no-repeat;
-  opacity:.58;
-  filter:brightness(1.08) contrast(1.04);
-  -webkit-mask-image:linear-gradient(180deg,transparent 0%,transparent 8%,rgba(0,0,0,1) 28%,rgba(0,0,0,1) 84%,transparent 100%);
-  mask-image:linear-gradient(180deg,transparent 0%,transparent 8%,rgba(0,0,0,1) 28%,rgba(0,0,0,1) 84%,transparent 100%)}
-.team::after{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
-  background:radial-gradient(ellipse 75% 65% at 50% 60%,color-mix(in srgb,var(--accent) 8%,transparent) 0%,rgba(6,13,23,.65) 55%,rgba(6,13,23,.9) 100%),
-    linear-gradient(180deg,var(--canvas) 0%,transparent 26%,transparent 80%,var(--canvas) 100%)}
-.team > .wrap{position:relative;z-index:1}
-
 /* quem somos */
 .about{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(40px,7vw,112px);align-items:start}
 .about .both{margin-top:28px;font-size:17px;color:var(--ink-2);max-width:40ch}
@@ -400,9 +386,21 @@ html:not(.js) .deliv h3{color:var(--ink)}
 .brand{margin-top:clamp(40px,5vw,56px)}
 .brand .pb{--h:68px;max-width:100%}
 
-/* fechamento */
-.close{padding:var(--section) 0 clamp(80px,10vw,128px)}
-.cta{position:relative;border:1px solid var(--line);border-radius:20px;background:var(--s1);padding:clamp(40px,7vw,96px) clamp(24px,5vw,72px);overflow:hidden;text-align:center}
+/* fechamento com imagem de fundo (fundo dobra 5) */
+.close{position:relative;overflow:hidden;padding:var(--section) 0 clamp(80px,10vw,128px)}
+.close::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+  background-image:image-set(url('assets/fundo-dobra5.webp') type('image/webp'), url('assets/fundo-dobra5.png') type('image/png'));
+  background-position:center;background-size:cover;background-repeat:no-repeat;
+  opacity:.62;
+  filter:brightness(1.1) contrast(1.05);
+  -webkit-mask-image:linear-gradient(180deg,transparent 0%,rgba(0,0,0,1) 16%,rgba(0,0,0,1) 84%,transparent 100%);
+  mask-image:linear-gradient(180deg,transparent 0%,rgba(0,0,0,1) 16%,rgba(0,0,0,1) 84%,transparent 100%)}
+.close::after{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:radial-gradient(ellipse 75% 65% at 50% 50%,color-mix(in srgb,var(--accent) 9%,transparent) 0%,rgba(6,13,23,.62) 55%,rgba(6,13,23,.88) 100%),
+    linear-gradient(180deg,var(--canvas) 0%,transparent 20%,transparent 80%,var(--canvas) 100%)}
+.close > .wrap{position:relative;z-index:1}
+
+.cta{position:relative;border:1px solid var(--line);border-radius:20px;background:rgba(12,21,36,.82);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);padding:clamp(40px,7vw,96px) clamp(24px,5vw,72px);overflow:hidden;text-align:center;box-shadow:0 1px 0 rgba(255,255,255,.08) inset, 0 24px 64px -16px rgba(2,10,20,.85)}
 .cta::before{content:"";position:absolute;left:50%;top:0;width:min(640px,80%);height:1px;transform:translateX(-50%);background:linear-gradient(90deg,transparent,color-mix(in srgb,var(--accent) 70%,transparent),transparent)}
 .cta h2{font-size:clamp(34px,4.8vw,60px);line-height:1.06;letter-spacing:-.04em;max-width:18ch;margin:0 auto}
 .cta .sub{margin:20px auto 0;text-align:center}
