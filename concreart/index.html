@@ -12,14 +12,14 @@
 <meta name="theme-color" content="#060d17">
 <link rel="icon" type="image/x-icon" href="favicon.ico">
 <link rel="shortcut icon" href="favicon.ico">
+<link rel="preload" as="image" href="assets/preloader-bg.webp" type="image/webp" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="image" href="assets/preloader-bg.png">
-<link rel="preload" as="image" href="assets/fundo-dobra1.png">
-<link rel="preload" as="image" href="assets/fundo-dobra2.webp">
-<link rel="preload" as="image" href="assets/fundo-dobra3.webp">
-<link rel="preload" as="image" href="assets/fundo-dobra4.webp">
-<link rel="preload" as="image" href="assets/fundo-dobra5.webp">
+<link rel="preload" as="image" href="assets/fundo-dobra1.webp" type="image/webp">
+<link rel="preload" as="image" href="assets/fundo-dobra2.webp" type="image/webp">
+<link rel="preload" as="image" href="assets/fundo-dobra3.webp" type="image/webp">
+<link rel="preload" as="image" href="assets/fundo-dobra4.webp" type="image/webp">
+<link rel="preload" as="image" href="assets/fundo-dobra5.webp" type="image/webp">
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=Inter+Tight:wght@700&display=swap" rel="stylesheet">
 <script>document.documentElement.classList.add('js')</script>
 <style>
@@ -123,7 +123,8 @@ html:not(.js) .lockup{opacity:1}
 /* capa */
 .cover{position:relative;min-height:100vh;min-height:100svh;display:grid;align-items:center;text-align:center;padding:96px 0 128px;overflow:hidden}
 .cover::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
-  background:url('assets/fundo-dobra1.png') center/cover no-repeat;
+  background-image:image-set(url('assets/fundo-dobra1.webp') type('image/webp'), url('assets/fundo-dobra1.jpg') type('image/jpeg'), url('assets/fundo-dobra1.png') type('image/png'));
+  background-position:center;background-size:cover;background-repeat:no-repeat;
   filter:brightness(1.45) contrast(1.06);
   -webkit-mask-image:linear-gradient(180deg,rgba(0,0,0,1) 0%,rgba(0,0,0,.92) 72%,transparent 100%);
   mask-image:linear-gradient(180deg,rgba(0,0,0,1) 0%,rgba(0,0,0,.92) 72%,transparent 100%)}
@@ -579,7 +580,8 @@ footer a:hover{color:var(--ink-2)}
 body.pl-lock{overflow:hidden}
 .preloader{position:fixed;inset:0;z-index:9999;display:grid;place-items:center;background:var(--canvas);overflow:hidden;transition:opacity .7s var(--ease),transform .7s var(--ease),filter .7s var(--ease),visibility .7s}
 .preloader.done{opacity:0;transform:scale(1.03);filter:blur(6px);pointer-events:none;visibility:hidden}
-.pl-bg{position:absolute;inset:-2%;background:url('assets/preloader-bg.png') center/cover no-repeat;transform:scale(1.07);animation:plzoom 6.2s var(--ease) forwards}
+.pl-bg{position:absolute;inset:-2%;background-color:#060d17;background-image:image-set(url('assets/preloader-bg.webp') type('image/webp'), url('assets/preloader-bg.jpg') type('image/jpeg'), url('assets/preloader-bg.png') type('image/png'));background-position:center;background-size:cover;background-repeat:no-repeat;transform:scale(1.07);animation:plzoom 3.6s var(--ease) forwards;overflow:hidden}
+.pl-bg picture, .pl-bg img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;pointer-events:none}
 @keyframes plzoom{to{transform:scale(1)}}
 .pl-vignette{position:absolute;inset:0;background:radial-gradient(circle at 50% 48%,color-mix(in srgb,var(--accent) 14%,transparent) 0%,rgba(6,13,23,.12) 52%,rgba(6,13,23,.48) 100%)}
 .pl-inner{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:24px;padding:0 var(--gutter);text-align:center;animation:plrise .75s var(--ease) both}
@@ -600,7 +602,12 @@ html:not(.js) .preloader{display:none}
 <body class="pl-lock">
 
 <div class="preloader" id="preloader" role="status" aria-live="polite" aria-label="Carregando proposta Concret Lab">
-  <div class="pl-bg" aria-hidden="true"></div>
+  <div class="pl-bg" aria-hidden="true">
+    <picture>
+      <source srcset="assets/preloader-bg.webp" type="image/webp">
+      <img src="assets/preloader-bg.jpg" alt="" fetchpriority="high" loading="eager" decoding="sync">
+    </picture>
+  </div>
   <div class="pl-vignette" aria-hidden="true"></div>
   <div class="pl-inner">
     <span class="logo pb" role="img" aria-label="Concret Lab"></span>
@@ -1040,20 +1047,20 @@ html:not(.js) .preloader{display:none}
       setTimeout(() => {
         preloader.classList.add('done');
         document.body.classList.remove('pl-lock');
-        setTimeout(() => preloader.remove(), 750);
-      }, reduced ? 40 : 200);
+        setTimeout(() => preloader.remove(), 600);
+      }, reduced ? 40 : 160);
     };
 
     if (reduced) {
       finish();
     } else {
       const start = performance.now();
-      const minDuration = 6000;
+      const minDuration = 2400;
       const tick = (now) => {
         const elapsed = now - start;
         const raw = Math.min(elapsed / minDuration, 1);
         const eased = 1 - Math.pow(1 - raw, 2);
-        const cap = loaded ? 100 : 92;
+        const cap = loaded ? 100 : 94;
         const pct = Math.min(Math.round(eased * 100), cap);
         if (fill) fill.style.width = pct + '%';
         if (pctEl) pctEl.textContent = String(pct).padStart(2, '0') + '%';
@@ -1062,7 +1069,7 @@ html:not(.js) .preloader{display:none}
           else if (pct < 75) statusEl.textContent = 'Calibrando curvas ABNT';
           else statusEl.textContent = 'Ambiente pronto';
         }
-        if (pct >= 100 || elapsed >= 8000) finish();
+        if (pct >= 100 || elapsed >= 4000) finish();
         else requestAnimationFrame(tick);
       };
       requestAnimationFrame(tick);
