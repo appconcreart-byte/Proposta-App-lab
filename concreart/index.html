@@ -16,6 +16,7 @@
 <link rel="preload" as="image" href="assets/fundo-dobra1.png">
 <link rel="preload" as="image" href="assets/fundo-dobra2.webp">
 <link rel="preload" as="image" href="assets/fundo-dobra3.webp">
+<link rel="preload" as="image" href="assets/fundo-dobra4.webp">
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=Inter+Tight:wght@700&display=swap" rel="stylesheet">
 <script>document.documentElement.classList.add('js')</script>
 <style>
@@ -320,11 +321,24 @@ html:not(.js) .deliv h3{color:var(--ink)}
 .js .phases.in .gbar{transform:none;opacity:1}
 .js .phases.in .gbar span{opacity:1}
 
-/* investimento */
+/* secao investimento com imagem de fundo (fundo dobra 4) */
+.pricing{position:relative;overflow:hidden}
+.pricing::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+  background-image:image-set(url('assets/fundo-dobra4.webp') type('image/webp'), url('assets/fundo-dobra4.png') type('image/png'));
+  background-position:center;background-size:cover;background-repeat:no-repeat;
+  opacity:.62;
+  filter:brightness(1.1) contrast(1.05);
+  -webkit-mask-image:linear-gradient(180deg,transparent 0%,rgba(0,0,0,1) 16%,rgba(0,0,0,1) 84%,transparent 100%);
+  mask-image:linear-gradient(180deg,transparent 0%,rgba(0,0,0,1) 16%,rgba(0,0,0,1) 84%,transparent 100%)}
+.pricing::after{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:radial-gradient(ellipse 75% 65% at 50% 50%,color-mix(in srgb,var(--accent) 8%,transparent) 0%,rgba(6,13,23,.62) 55%,rgba(6,13,23,.88) 100%),
+    linear-gradient(180deg,var(--canvas) 0%,transparent 20%,transparent 80%,var(--canvas) 100%)}
+.pricing > .wrap{position:relative;z-index:1}
+
 .invest-stack{margin-top:clamp(36px,4.5vw,56px);display:grid;gap:24px}
-.invest{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1.15fr);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.invest{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1.15fr);border:1px solid var(--line);border-radius:16px;overflow:hidden;background:rgba(8,15,27,.82);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
 .invest.featured{border-color:color-mix(in srgb,var(--accent) 42%,var(--line));box-shadow:0 1px 0 color-mix(in srgb,var(--accent) 25%,transparent) inset, 0 20px 48px -20px rgba(2,10,20,.8)}
-.price{padding:clamp(28px,4vw,48px);background:var(--s1);border-right:1px solid var(--line);display:flex;flex-direction:column;justify-content:space-between;gap:24px}
+.price{padding:clamp(28px,4vw,48px);background:rgba(12,21,36,.85);border-right:1px solid var(--line);display:flex;flex-direction:column;justify-content:space-between;gap:24px}
 .price-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
 .price .calc{font-size:15px;color:var(--ink-3)}
 .price .calc b{color:var(--ink);font-weight:500}
@@ -350,7 +364,7 @@ html:not(.js) .deliv h3{color:var(--ink)}
 .promo-perk svg{width:13px;height:13px;color:var(--ok);flex:none}
 .price .once{margin-top:14px;font-size:14.5px;color:var(--ink-3);line-height:1.55}
 .price-quote{margin:0;padding:16px 18px;border-left:2px solid var(--accent);border-radius:0 10px 10px 0;background:color-mix(in srgb,var(--accent) 7%,var(--s2));font-size:14.5px;line-height:1.55;color:var(--ink-2)}
-.incl{padding:clamp(28px,4vw,48px);background:var(--canvas)}
+.incl{padding:clamp(28px,4vw,48px);background:rgba(6,13,23,.82)}
 .incl-title{font-family:var(--mono);font-size:11.5px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-4);margin-bottom:18px}
 .incl ul{list-style:none;margin:0;padding:0}
 .incl li{display:flex;gap:12px;padding:14px 0;border-bottom:1px solid var(--line);font-size:15px;line-height:1.5;color:var(--ink-2)}
