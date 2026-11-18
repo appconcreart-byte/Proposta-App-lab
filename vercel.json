@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "cleanUrls": true,
+  "rewrites": [
+    { "source": "/assets/(.*)", "destination": "/concreart/assets/$1" },
+    { "source": "/favicon.ico", "destination": "/concreart/favicon.ico" },
+    { "source": "/", "destination": "/concreart/index.html" },
+    { "source": "/(.*)", "destination": "/concreart/$1" }
+  ]
+}
