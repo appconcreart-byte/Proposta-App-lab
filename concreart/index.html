@@ -17,6 +17,7 @@
 <link rel="preload" as="image" href="assets/fundo-dobra2.webp">
 <link rel="preload" as="image" href="assets/fundo-dobra3.webp">
 <link rel="preload" as="image" href="assets/fundo-dobra4.webp">
+<link rel="preload" as="image" href="assets/fundo-dobra5.webp">
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=Inter+Tight:wght@700&display=swap" rel="stylesheet">
 <script>document.documentElement.classList.add('js')</script>
 <style>
@@ -372,6 +373,20 @@ html:not(.js) .deliv h3{color:var(--ink)}
 .incl li:last-child{border-bottom:0;padding-bottom:0}
 .incl li b{color:var(--ink);font-weight:600}
 .incl li svg{width:16px;height:16px;color:var(--ok);flex:none;margin-top:4px}
+
+/* secao quem somos com imagem de fundo (fundo dobra 5) */
+.team{position:relative;overflow:hidden}
+.team::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+  background-image:image-set(url('assets/fundo-dobra5.webp') type('image/webp'), url('assets/fundo-dobra5.png') type('image/png'));
+  background-position:center;background-size:cover;background-repeat:no-repeat;
+  opacity:.58;
+  filter:brightness(1.08) contrast(1.04);
+  -webkit-mask-image:linear-gradient(180deg,transparent 0%,rgba(0,0,0,1) 16%,rgba(0,0,0,1) 84%,transparent 100%);
+  mask-image:linear-gradient(180deg,transparent 0%,rgba(0,0,0,1) 16%,rgba(0,0,0,1) 84%,transparent 100%)}
+.team::after{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:radial-gradient(ellipse 75% 65% at 50% 50%,color-mix(in srgb,var(--accent) 8%,transparent) 0%,rgba(6,13,23,.65) 55%,rgba(6,13,23,.9) 100%),
+    linear-gradient(180deg,var(--canvas) 0%,transparent 20%,transparent 80%,var(--canvas) 100%)}
+.team > .wrap{position:relative;z-index:1}
 
 /* quem somos */
 .about{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(40px,7vw,112px);align-items:start}
