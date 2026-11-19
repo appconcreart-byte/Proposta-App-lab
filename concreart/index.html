@@ -731,7 +731,7 @@ html:not(.js) .preloader{display:none}
       <a href="#investimento">Investimento</a>
     </nav>
     <div class="nav-actions">
-      <a class="btn btn-primary btn-sm" href="#aprovar"><span>Aprovar proposta</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a class="btn btn-primary btn-sm" href="https://wa.me/5562993830061?text=Ol%C3%A1%20gostei%20da%20proposta%20!%20%0Aquais%20s%C3%A3o%20os%20proximos%20passos%20%3F%20%20" target="_blank" rel="noopener"><span>Aprovar proposta</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </div>
   </div>
   <div class="progress" id="progress"></div>
@@ -749,7 +749,7 @@ html:not(.js) .preloader{display:none}
     <a href="#quem-somos">Quem somos</a>
   </nav>
   <div class="mobile-cta">
-    <a class="btn btn-primary" href="#aprovar"><span>Aprovar proposta</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    <a class="btn btn-primary" href="https://wa.me/5562993830061?text=Ol%C3%A1%20gostei%20da%20proposta%20!%20%0Aquais%20s%C3%A3o%20os%20proximos%20passos%20%3F%20%20" target="_blank" rel="noopener"><span>Aprovar proposta</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
   </div>
 </div>
 
@@ -779,7 +779,7 @@ html:not(.js) .preloader{display:none}
           <div><dt>Plataforma</dt><dd>Web e Mobile</dd></div>
         </dl>
         <div class="hero-cta" data-r style="--i:3">
-          <a class="btn btn-primary" href="#aprovar">Aprovar proposta</a>
+          <a class="btn btn-primary" href="https://wa.me/5562993830061?text=Ol%C3%A1%20gostei%20da%20proposta%20!%20%0Aquais%20s%C3%A3o%20os%20proximos%20passos%20%3F%20%20" target="_blank" rel="noopener">Aprovar proposta</a>
           <a class="btn btn-ghost" href="#solucao">Ver como funciona</a>
         </div>
       </div>
@@ -1127,7 +1127,7 @@ html:not(.js) .preloader{display:none}
         <h2>Vamos conectar o laboratório à produção?</h2>
         <p class="sub">Com a aprovação, iniciamos a configuração dos parâmetros e materiais na próxima semana.</p>
         <div class="cta-row">
-          <a class="btn btn-primary" id="cta-wa" href="#" target="_blank" rel="noopener"><svg width="18" height="18"><use href="#i-whats"/></svg>Aprovar pelo WhatsApp</a>
+          <a class="btn btn-primary" id="cta-wa" href="https://wa.me/5562993830061?text=Ol%C3%A1%20gostei%20da%20proposta%20!%20%0Aquais%20s%C3%A3o%20os%20proximos%20passos%20%3F%20%20" target="_blank" rel="noopener"><svg width="18" height="18"><use href="#i-whats"/></svg>Aprovar pelo WhatsApp</a>
           <a class="btn btn-ghost" id="cta-mail" href="#"><svg width="18" height="18"><use href="#i-mail"/></svg>Aprovar por e-mail</a>
         </div>
         <div class="sign">
@@ -1197,7 +1197,7 @@ html:not(.js) .preloader{display:none}
   }
 
   const CFG = {
-    whatsapp: '5562981369750',
+    whatsapp: '5562993830061',
     email: 'contato@concretlab.com.br',
     projeto: 'Concret Lab'
   };
@@ -1224,12 +1224,16 @@ html:not(.js) .preloader{display:none}
     }
   };
 
-  const msg = `Olá, Victor! Aprovamos a proposta da ${CFG.projeto}. Vamos combinar os próximos passos?`;
-  const mailHref = `mailto:${CFG.email}?subject=${encodeURIComponent('Aprovação da proposta: ' + CFG.projeto)}&body=${encodeURIComponent(msg)}`;
+  const waUrl = 'https://wa.me/5562993830061?text=Ol%C3%A1%20gostei%20da%20proposta%20!%20%0Aquais%20s%C3%A3o%20os%20proximos%20passos%20%3F%20%20';
+  const mailMsg = 'Olá gostei da proposta !\nquais são os proximos passos ?';
+  const mailHref = `mailto:${CFG.email}?subject=${encodeURIComponent('Aprovação da proposta: ' + CFG.projeto)}&body=${encodeURIComponent(mailMsg)}`;
   const wa = document.getElementById('cta-wa');
-  if (/^\d{12,13}$/.test(CFG.whatsapp)) wa.href = `https://wa.me/${CFG.whatsapp}?text=${encodeURIComponent(msg)}`;
-  else { wa.href = mailHref; wa.removeAttribute('target'); }
-  document.getElementById('cta-mail').href = mailHref;
+  if (wa) wa.href = waUrl;
+  const ctaMail = document.getElementById('cta-mail');
+  if (ctaMail) ctaMail.href = mailHref;
+  document.querySelectorAll('a.btn-primary[href*="wa.me"]').forEach(el => {
+    el.href = waUrl;
+  });
 
   if (window.location.hash === '#proposta') {
     history.replaceState(null, '', '#problema');
