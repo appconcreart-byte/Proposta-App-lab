@@ -225,9 +225,80 @@ section[id]{padding:var(--section) 0}
   background:#05172b;
 }
 
+/* onde a desconexao vira prejuizo financeiro */
+.financial-loss-grid{
+  margin-top:24px;
+  display:grid;
+  grid-template-columns:repeat(3, minmax(0,1fr));
+  gap:16px;
+}
+.loss-card{
+  background:linear-gradient(180deg, rgba(248,113,113,.08) 0%, rgba(15,29,48,.65) 100%);
+  border:1px solid rgba(248,113,113,.22);
+  border-radius:14px;
+  padding:20px 18px;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  position:relative;
+  transition:border-color .3s, transform .3s;
+}
+.loss-card:hover{
+  border-color:rgba(248,113,113,.42);
+  transform:translateY(-2px);
+}
+.loss-badge{
+  font-family:var(--mono);
+  font-size:10.5px;
+  letter-spacing:.05em;
+  text-transform:uppercase;
+  color:#fca5a5;
+  background:rgba(239,68,68,.14);
+  border:1px solid rgba(239,68,68,.28);
+  border-radius:6px;
+  padding:3px 8px;
+  align-self:flex-start;
+  font-weight:500;
+}
+.loss-head{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-top:4px;
+}
+.loss-icon{
+  width:32px;
+  height:32px;
+  border-radius:8px;
+  background:rgba(248,113,113,.16);
+  border:1px solid rgba(248,113,113,.32);
+  display:grid;
+  place-items:center;
+  font-size:15px;
+  flex:none;
+}
+.loss-head h4{
+  font-size:16px;
+  font-weight:600;
+  letter-spacing:-.01em;
+  color:var(--ink);
+  margin:0;
+  line-height:1.25;
+}
+.loss-card p{
+  margin:4px 0 0;
+  font-size:13.5px;
+  line-height:1.5;
+  color:var(--ink-3);
+}
+.loss-card p b{
+  color:var(--ink-2);
+  font-weight:500;
+}
+
 /* faixa de conclusao objetiva */
 .conclusion-box{
-  margin-top:28px;
+  margin-top:20px;
   padding:16px 22px;
   border-radius:12px;
   background:rgba(248,113,113,.08);
@@ -474,7 +545,9 @@ footer a:hover{color:var(--ink-2)}
 
   /* proposta / problema */
   .flow-motion-container{margin-top:22px;border-radius:14px}
-  .conclusion-box{flex-direction:column;align-items:flex-start;padding:12px 14px;border-radius:12px;font-size:14px;gap:10px;margin-top:16px}
+  .financial-loss-grid{grid-template-columns:1fr;gap:12px;margin-top:18px}
+  .loss-card{padding:16px 14px}
+  .conclusion-box{flex-direction:column;align-items:flex-start;padding:12px 14px;border-radius:12px;font-size:14px;gap:10px;margin-top:14px}
 
   /* solucao */
   .solution{gap:32px}
@@ -745,7 +818,7 @@ html:not(.js) .preloader{display:none}
     <div class="wrap">
       <h2 class="h2 sec-h" data-r>Problema</h2>
       <p class="statement" data-r style="--i:1">Tudo feito em planilhas hoje, <span class="dim">com dados espalhados e retrabalho constante.</span></p>
-      <p class="sub" data-r style="--i:2">A falta de conexão direta entre laboratório, produção e gestão gera perda de informação, atraso na desforma e lentidão na emissão dos laudos.</p>
+      <p class="sub" data-r style="--i:2">A falta de conexão direta entre laboratório, produção e gestão gera perda silenciosa de dados — transformando erros de planilhas em atraso na desforma e prejuízo financeiro direto.</p>
 
       <div class="flow-motion-container" data-r style="--i:2">
         <video class="flow-video" autoplay loop muted playsinline preload="auto" poster="assets/jornada-ao-retrabalho-poster.jpg" aria-label="Motion Jornada ao retrabalho: traços em planilhas, rompimentos, rastreabilidade e laudos e decisão">
@@ -753,9 +826,39 @@ html:not(.js) .preloader{display:none}
         </video>
       </div>
 
+      <!-- ONDE A DESCONEXAO VIRA PREJUIZO FINANCEIRO -->
+      <div class="financial-loss-grid" data-r style="--i:3">
+        <div class="loss-card">
+          <div class="loss-badge">Prejuízo Oculto 01</div>
+          <div class="loss-head">
+            <span class="loss-icon">💸</span>
+            <h4>Consumo Excessivo de Cimento</h4>
+          </div>
+          <p>Sem traço dinâmico aferido pela curva real, a usina infla o cimento por margem de segurança. <b>O custo extra a cada m³ drena milhares de reais todo mês.</b></p>
+        </div>
+
+        <div class="loss-card">
+          <div class="loss-badge">Prejuízo Oculto 02</div>
+          <div class="loss-head">
+            <span class="loss-icon">⏱️</span>
+            <h4>Pistas Paradas e Atraso no Giro</h4>
+          </div>
+          <p>Sem dados ágeis de resistência inicial (1d e 3d), a equipe atrasa a desforma. <b>A usina perde giros de pista e compromete prazos de entrega.</b></p>
+        </div>
+
+        <div class="loss-card">
+          <div class="loss-badge">Prejuízo Oculto 03</div>
+          <div class="loss-head">
+            <span class="loss-icon">🚨</span>
+            <h4>Peças Condenadas e Refugo</h4>
+          </div>
+          <p>O erro na planilha só aparece aos 28 dias: com a peça já concretada, curada ou instalada em obra. <b>O refugo é total e o prejuízo é irreversível.</b></p>
+        </div>
+      </div>
+
       <div class="conclusion-box" data-r style="--i:3">
         <div class="conclusion-icon">⚠️</div>
-        <p class="conclusion">Quando o controle é manual, <b>o erro só aparece depois que a peça já foi concretada.</b></p>
+        <p class="conclusion"><b>Informação desconectada é prejuízo financeiro:</b> no controle manual, o erro só aparece depois que o cimento foi pago e a peça já foi concretada.</p>
       </div>
     </div>
   </section>
