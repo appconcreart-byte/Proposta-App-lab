@@ -716,7 +716,7 @@ html:not(.js) .preloader{display:none}
             <button class="sys-tab active" type="button" onclick="switchSysView(0)">Curva e Solver</button>
             <button class="sys-tab" type="button" onclick="switchSysView(1)">Painel de Controle</button>
             <button class="sys-tab" type="button" onclick="switchSysView(2)">Lotes em Produção</button>
-            <button class="sys-tab" type="button" onclick="switchSysView(3)">Rompimentos (7d/28d)</button>
+            <button class="sys-tab" type="button" onclick="switchSysView(3)">Rompimentos (1-3-7-28d)</button>
           </div>
           <div class="sys-view">
             <img id="sys-hero-img" src="assets/sistema/Granolometria.png" alt="Curva Granulométrica e Solver Pro">
@@ -814,8 +814,8 @@ html:not(.js) .preloader{display:none}
           <div class="ic"><svg><use href="#i-file"/></svg></div>
           <div>
             <h3>Rompimentos e Laudos</h3>
-            <p>Acompanhamento de CPs aos 7d e 28d, projeção de Fck e emissão do laudo técnico em PDF em 1 clique.</p>
-            <div class="ex"><span><em>Idades</em>7d e 28d</span><span><em>Fck Previsto</em>35 MPa</span><span><em>Relatório</em>PDF certificado</span></div>
+            <p>Acompanhamento de CPs (1, 3, 7 e 28 dias ou personalizado pela empresa), projeção de Fck e emissão do laudo técnico em PDF em 1 clique.</p>
+            <div class="ex"><span><em>Idades</em>1, 3, 7, 28d ou personalizado</span><span><em>Fck Previsto</em>35 MPa</span><span><em>Relatório</em>PDF certificado</span></div>
             <div class="screen-preview">
               <img src="assets/sistema/cronograma_rompimentos.png" alt="Acompanhamento de Rompimentos e Ensaios">
             </div>
@@ -971,7 +971,7 @@ html:not(.js) .preloader{display:none}
               <li><svg><use href="#i-check"/></svg><span><b>Sem mensalidade recorrente:</b> investimento pago uma única vez, eliminando custo fixo mensal de assinatura.</span></li>
               <li><svg><use href="#i-check"/></svg><span><b>Autonomia e estrutura própria:</b> hospedagem, banco de dados e controle completo do ambiente sob gestão da sua empresa.</span></li>
               <li><svg><use href="#i-check"/></svg><span><b>Liberdade de personalização:</b> flexibilidade para adaptar fluxos, traços, relatórios e futuras integrações à rotina da fábrica.</span></li>
-              <li><svg><use href="#i-check"/></svg><span><b>Implantação completa inclusa:</b> setup da unidade, calibração de traços (Lajes, Pavers e Blocos), Solver Granulométrico com DNA Alvo, rompimentos (7d/28d) e laudos em PDF.</span></li>
+              <li><svg><use href="#i-check"/></svg><span><b>Implantação completa inclusa:</b> setup da unidade, calibração de traços (Lajes, Pavers e Blocos), Solver Granulométrico com DNA Alvo, rompimentos (1, 3, 7 e 28 dias ou personalizado pela empresa) e laudos em PDF.</span></li>
               <li><svg><use href="#i-check"/></svg><span><b>Melhor retorno no longo prazo:</b> em poucos meses o valor se paga frente a assinaturas, virando um ativo definitivo da operação.</span></li>
               <li><svg><use href="#i-check"/></svg><span><b>1 ano de suporte e assessoria incluso:</b> fechando hoje, o acompanhamento técnico sobe de 6 meses para 1 ano completo para operar laboratório e produção com segurança.</span></li>
             </ul>
@@ -1086,7 +1086,7 @@ html:not(.js) .preloader{display:none}
     { img: 'assets/sistema/Granolometria.png', cap: '<b>Traço Laje Protendida LP-12 (Fck 35 MPa)</b> - Curva combinada com DNA Alvo', norm: 'Conforme NBR 7211' },
     { img: 'assets/sistema/hero_dashboard.png', cap: '<b>Painel de Métricas Executivas</b> - Visão geral de conformidade e indicadores', norm: 'Tempo Real' },
     { img: 'assets/sistema/producao_lotes.png', cap: '<b>Painel de Produção</b> - Lotes liberados e vinculados em tempo real', norm: 'LOTE-2026-104' },
-    { img: 'assets/sistema/cronograma_rompimentos.png', cap: '<b>Cronograma de Rompimentos</b> - Acompanhamento de CPs aos 7 e 28 dias', norm: 'NBR 5739' }
+    { img: 'assets/sistema/cronograma_rompimentos.png', cap: '<b>Cronograma de Rompimentos</b> - Acompanhamento de CPs (1, 3, 7 e 28 dias ou personalizado pela empresa)', norm: 'NBR 5739' }
   ];
 
   window.switchSysView = function(idx) {
