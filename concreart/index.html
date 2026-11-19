@@ -645,7 +645,7 @@ html:not(.js) .preloader{display:none}
       </a>
     </div>
     <nav class="nav-links" aria-label="Seções">
-      <a href="#proposta">Proposta</a>
+      <a href="#problema">Problema</a>
       <a href="#solucao">Solução</a>
       <a href="#cronograma">Cronograma</a>
       <a href="#investimento">Investimento</a>
@@ -661,7 +661,7 @@ html:not(.js) .preloader{display:none}
 <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
   <nav aria-label="Menu mobile">
     <a href="#resumo">Resumo</a>
-    <a href="#proposta">Proposta</a>
+    <a href="#problema">Problema</a>
     <a href="#solucao">Solução</a>
     <a href="#como-funciona">Como funciona</a>
     <a href="#cronograma">Cronograma</a>
@@ -740,10 +740,10 @@ html:not(.js) .preloader{display:none}
     </div>
   </section>
 
-  <!-- PROPOSTA -->
-  <section class="problem proposta" id="proposta">
+  <!-- PROBLEMA -->
+  <section class="problem" id="problema">
     <div class="wrap">
-      <h2 class="h2 sec-h" data-r>Proposta</h2>
+      <h2 class="h2 sec-h" data-r>Problema</h2>
       <p class="statement" data-r style="--i:1">Tudo feito em planilhas hoje, <span class="dim">com dados espalhados e retrabalho constante.</span></p>
       <p class="sub" data-r style="--i:2">A falta de conexão direta entre laboratório, produção e gestão gera perda de informação, atraso na desforma e lentidão na emissão dos laudos.</p>
 
@@ -1111,8 +1111,8 @@ html:not(.js) .preloader{display:none}
   else { wa.href = mailHref; wa.removeAttribute('target'); }
   document.getElementById('cta-mail').href = mailHref;
 
-  if (window.location.hash === '#problema') {
-    history.replaceState(null, '', '#proposta');
+  if (window.location.hash === '#proposta') {
+    history.replaceState(null, '', '#problema');
   }
 
   const nav = document.getElementById('nav');
